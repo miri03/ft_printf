@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 21:58:25 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/02 11:59:18 by meharit          ###   ########.fr       */
+/*   Created: 2022/10/14 21:23:06 by meharit           #+#    #+#             */
+/*   Updated: 2022/10/27 08:54:34 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+//#include "libft.h"
+#include "printf.h"
 
-#include "libft/libft.h"
-#include <stdarg.h>
-#include<unistd.h>
-#include<stdlib.h>
-
-# endif
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd >= 0)
+		write(fd, &c, 1);
+}

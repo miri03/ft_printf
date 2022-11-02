@@ -6,12 +6,11 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 21:57:41 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/02 07:08:54 by meharit          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:26:56 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"printf.h"
-#include<stdio.h>
 int	ft_printf(const char *str, ...)
 {
 	int count;
@@ -38,8 +37,25 @@ int	ft_printf(const char *str, ...)
 				count++;
 			}
 			else
+			{
+				if (str[i] == 'd')
+				{
+					ft_putnbr_fd(va_arg(ptr, int), 1, &count);
+					i++; //fucked up line
+					count++; // the new fucked up line
+				}
+				if (str[i] == 's')
+				{
+				//	printf("first\n");
+					ft_putstr_fd(va_arg(ptr, char *), 1, &count);
+					i++;
+					printf("in =%d",count);
+					//count++; // the new fucked up line
+				}
+			// re	printf("\nafterr:");
 				ft_putchar_fd(str[i], 1);
 				count++;
+			}
 			i++;
 		}
 	}
@@ -47,8 +63,10 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
+#include<stdio.h>
 int main()
 {
-	int i = printf("%%kb%%%js%\n");
-	printf("%d",i);
+	int a = 443644;
+	int i = ft_printf("%s","0xA");
+	printf("\n%d",i);
 }

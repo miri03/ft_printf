@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 21:58:25 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/02 11:59:18 by meharit          ###   ########.fr       */
+/*   Created: 2022/10/18 20:33:21 by meharit           #+#    #+#             */
+/*   Updated: 2022/10/29 15:46:41 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include"libft.h"
 
-#include "libft/libft.h"
-#include <stdarg.h>
-#include<unistd.h>
-#include<stdlib.h>
-
-# endif
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
+}

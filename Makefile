@@ -6,14 +6,33 @@
 #    By: meharit <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 10:47:03 by meharit           #+#    #+#              #
-#    Updated: 2022/11/01 22:04:03 by meharit          ###   ########.fr        #
+#    Updated: 2022/11/02 11:32:22 by meharit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc;
+CC = cc
+
+NAME = libftprintf.a
 
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = libftprintf.a
 
-CFILES = 
+LIBC = ar rc
+
+SRC = printf.c \
+	  ft_putchar_fd.c \
+	  ft_putnbr_fd.c \
+
+OBJ = ${SRC:.c=.o}
+
+all : ${NAME}
+
+${NAME} : ${OBJ}
+	${LIBC} ${NAME} ${OBJ}
+
+clean :
+	rm -rf ${OBJ}
+
+fclean : clean
+	rm -rf ${NAME}

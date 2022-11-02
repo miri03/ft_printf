@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 21:58:25 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/02 11:59:18 by meharit          ###   ########.fr       */
+/*   Created: 2022/10/18 20:34:25 by meharit           #+#    #+#             */
+/*   Updated: 2022/11/02 12:02:42 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+//#include"libft.h"
+#include "printf.h"
+int	ft_putnbr_fd(int n, int fd)
+{
+	int count;
 
-#include "libft/libft.h"
-#include <stdarg.h>
-#include<unistd.h>
-#include<stdlib.h>
-
-# endif
+	count = 0;
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
+	{
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n *= -1;
+			count++;
+		}
+		if (n >= 10)
+		{
+			count++;
+			ft_putnbr_fd(n / 10, fd);
+		}
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
+	return (count);
+}
