@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fc_output.c                                        :+:      :+:    :+:   */
+/*   out_put.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 04:31:48 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/04 03:14:28 by meharit          ###   ########.fr       */
+/*   Created: 2022/11/05 01:28:21 by meharit           #+#    #+#             */
+/*   Updated: 2022/11/05 06:19:36 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// remove fd
 
 #include"ft_printf.h"
 
@@ -54,7 +56,20 @@ int	ft_putchar_fd(char c, int fd,int *count)
 {
 		*count = *count + 1;
 		write(fd, &c, 1);
-//	printf("[in]%d\n", *count);
+	//	printf("[in]%d\n", *count);
 	return (*count);
 }
 
+void	to_hex(unsigned long d, char c, int *count)
+{
+//	printf("[in]%u		%u\n", d, d % 16);
+	char base[] = "0123456789abcdef";
+	char BASE[] = "0123456789ABCDEF";
+	if (d >= 16)
+		to_hex(d / 16, c,count);
+	//ft_putstr_fd("0x", 1, count);
+	if (c == 'X')
+		ft_putchar_fd(BASE[d % 16], 1, count);
+	else
+		ft_putchar_fd(base[d % 16], 1, count);
+}

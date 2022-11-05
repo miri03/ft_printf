@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 21:58:25 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/04 02:36:49 by meharit          ###   ########.fr       */
+/*   Updated: 2022/11/05 06:18:06 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void	ft_putnbr_fd(int n, int fd, int *count);
 void	ft_putstr_fd(char *s, int fd, int *count);
 int		ft_putchar_fd(char c, int fd, int *count);
 int		ft_printf(const char* s, ...);
+void	to_hex(unsigned long d, char c, int *count);
 # endif
