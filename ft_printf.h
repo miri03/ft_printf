@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 21:58:25 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/06 13:54:45 by meharit          ###   ########.fr       */
+/*   Updated: 2022/11/06 14:23:09 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ int		is_char(char c, int *i);
 int		is_pointer(unsigned long d, char c, int *i);
 void	ft_put(va_list ptr, char c, int *i, int *count);
 size_t	ft_strlen(const char *s);
-
 
 #endif

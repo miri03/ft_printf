@@ -6,21 +6,11 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:28:35 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/06 14:17:33 by meharit          ###   ########.fr       */
+/*   Updated: 2022/11/06 14:24:47 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include"ft_printf.h"
-
-#include<stdio.h>
-int	is_decimal(int dec, int *i)
-{
-	int	count;
-
-	count = 0;
-	*i = *i + 1;
-	ft_putnbr_fd(dec, &count);
-	return (count);
-}
 
 int	is_string(char *s, int *i)
 {
@@ -63,11 +53,11 @@ void	ft_output(va_list ptr, char c, int *i, int *count)
 	if (c == '%')
 		*count = *count + is_char(c, i);
 	else if (c == 'd' || c == 'i')
-		*count =  *count + is_decimal(va_arg(ptr, int), i);
+		*count = *count + is_decimal(va_arg(ptr, int), i);
 	else if (c == 's')
 		*count = *count + is_string(va_arg(ptr, char *), i);
 	else if (c == 'c')
-		*count = *count +  is_char((char)va_arg(ptr, int), i);
+		*count = *count + is_char((char)va_arg(ptr, int), i);
 	else if (c == 'p' || c == 'x' || c == 'X')
 		*count = *count + is_pointer((unsigned long)va_arg(ptr, void *), c, i);
 	else if (c == 'u')
@@ -87,41 +77,15 @@ int	ft_printf(const char *str, ...)
 	{
 		while (str[i] && str[i] != '%')
 			count += is_char(str[i], &i);
-
 		while (str[i] && str[i] == '%')
 		{
 			i++;
-			if (str[i] == '%' || str[i] == 'd' || str[i] == 'i' 
-				|| str[i] == 's' || str[i] == 'c' || str[i] == 'p' 
+			if (str[i] == '%' || str[i] == 'd' || str[i] == 'i'
+				|| str[i] == 's' || str[i] == 'c' || str[i] == 'p'
 				|| str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
 				ft_output(ptr, str[i], &i, &count);
-
-/*
-			if (str[i] == '%')
-				count += is_char(str[i], &i);
-			else if (str[i] == 'd' || str[i] == 'i')
-				count += is_decimal(va_arg(ptr, int), &i);
-			else if (str[i] == 's')
-				count += is_string(va_arg(ptr, char *), &i);
-			else if (str[i] == 'c')
-				count += is_char((char)va_arg(ptr, int), &i);
-			else if (str[i] == 'p' || str[i] == 'x' || str[i] == 'X')
-				count += is_pointer((unsigned long)va_arg(ptr, void *),
-						str[i], &i);
-			else if (str[i] == 'u')
-				count += is_unsigned(va_arg(ptr, unsigned int), &i);
-*/
 		}
 	}
 	va_end(ptr);
 	return (count);
 }
-/*
-#include<stdio.h>
-int main()
-{
-	int i = ft_printf(" %x \n", 789456);
-	int a =  printf(" %x \n", 789456);
-	printf("mine %d // sys %d", i,a);
-}
-*/

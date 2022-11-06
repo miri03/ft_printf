@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:46:51 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/06 13:55:05 by meharit          ###   ########.fr       */
+/*   Updated: 2022/11/06 14:23:30 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,14 @@ void	to_hex(unsigned long d, char c, int *count)
 		ft_putchar_fd(up_base[d % 16], count);
 	else
 		ft_putchar_fd(base[d % 16], count);
+}
+
+int	is_decimal(int dec, int *i)
+{
+	int	count;
+
+	count = 0;
+	*i = *i + 1;
+	ft_putnbr_fd(dec, &count);
+	return (count);
 }
