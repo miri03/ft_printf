@@ -6,11 +6,9 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:28:21 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/05 14:33:17 by meharit          ###   ########.fr       */
+/*   Updated: 2022/11/06 13:57:37 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// remove fd
 
 #include"ft_printf.h"
 
@@ -24,51 +22,44 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-void	ft_putnbr_fd(int n,char c, int fd, int *count)
+void	ft_unsignbr(unsigned int n, int *count)
 {
-	if (c == 'u')
-		(unsigned int)n;
+	if (n >= 10)
+		ft_unsignbr(n / 10, count);
+	ft_putchar_fd(n % 10 + '0', count);
+}
+
+void	ft_putnbr_fd(int n, int *count)
+{
 	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd, count);
+		ft_putstr_fd("-2147483648", count);
 	else
 	{
 		if (n < 0)
 		{
-			ft_putchar_fd('-', fd, count);
+			ft_putchar_fd('-', count);
 			n *= -1;
 		}
 		if (n >= 10)
-			ft_putnbr_fd(n / 10, c,fd, count);
-		ft_putchar_fd(n % 10 + '0', fd, count);
+			ft_putnbr_fd(n / 10, count);
+		ft_putchar_fd(n % 10 + '0', count);
 	}
 }
 
-void	ft_putstr_fd(char *s, int fd, int *count)
+void	ft_putstr_fd(char *s, int *count)
 {
 	if (s == NULL)
 	{
-		ft_putstr_fd("(null)", 1, count);
+		ft_putstr_fd("(null)", count);
 		return ;
 	}
-	write(fd, s, ft_strlen(s));
+	write(1, s, ft_strlen(s));
 	*count = *count + ft_strlen(s);
 }
 
-int	ft_putchar_fd(char c, int fd,int *count)
+int	ft_putchar_fd(char c, int *count)
 {
-		*count = *count + 1;
-		write(fd, &c, 1);
+	*count = *count + 1;
+	write(1, &c, 1);
 	return (*count);
-}
-
-void	to_hex(unsigned long d, char c, int *count)
-{
-	char base[] = "0123456789abcdef";
-	char BASE[] = "0123456789ABCDEF";
-	if (d >= 16)
-		to_hex(d / 16, c,count);
-	if (c == 'X')
-		ft_putchar_fd(BASE[d % 16], 1, count);
-	else
-		ft_putchar_fd(base[d % 16], 1, count);
 }

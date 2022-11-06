@@ -6,7 +6,7 @@
 #    By: meharit <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 10:47:03 by meharit           #+#    #+#              #
-#    Updated: 2022/11/04 02:41:32 by meharit          ###   ########.fr        #
+#    Updated: 2022/11/06 13:55:32 by meharit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBC = ar rc
 
 SRC = ft_printf.c \
 	  out_put.c \
+	  afunc.c \
 
 OBJ = ${SRC:.c=.o}
 
