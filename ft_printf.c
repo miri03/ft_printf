@@ -6,7 +6,7 @@
 /*   By: meharit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:28:35 by meharit           #+#    #+#             */
-/*   Updated: 2022/11/06 14:24:47 by meharit          ###   ########.fr       */
+/*   Updated: 2022/11/07 11:54:24 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_output(va_list ptr, char c, int *i, int *count)
 	else if (c == 'c')
 		*count = *count + is_char((char)va_arg(ptr, int), i);
 	else if (c == 'p' || c == 'x' || c == 'X')
-		*count = *count + is_pointer((unsigned long)va_arg(ptr, void *), c, i);
+		*count = *count + is_pointer(va_arg(ptr, unsigned long), c, i);
 	else if (c == 'u')
 		*count = *count + is_unsigned(va_arg(ptr, unsigned int), i);
 }
